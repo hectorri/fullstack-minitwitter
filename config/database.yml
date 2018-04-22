@@ -33,9 +33,5 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  host: ec2-54-221-192-231.compute-1.amazonaws.com
-  port: 5432
-  database: d376hmif0djl55
-  username: imiltdlqwbsmgz
-  password: f0ed9e1fd8e3a292deaf06709b3815b0a95389ccc3eb76b3ca28b43a80a3b1af
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
